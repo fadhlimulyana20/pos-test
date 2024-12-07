@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\TaxController;
+use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\MarkUpController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/calculate-tax', [TaxController::class, 'calculateTax']);
+Route::post('/calculate-total-discount', [DiscountController::class, 'calculateTotalDiscount']);
+Route::post('/markup-price-for-delivery', [MarkUpController::class, 'markupPriceForDeliveryMerchant']);
